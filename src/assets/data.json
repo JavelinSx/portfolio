@@ -1,0 +1,59 @@
+{
+  "projects": [
+    {
+      "name": "Chess Nexus",
+      "description": "Fullstack шахматное приложение",
+      "technologies": ["Nuxt3", "Nitro"],
+      "live": "https://chessnexus.ru/",
+      "github": "https://github.com/JavelinSx/chess",
+      "type": "Коммерческий проект"
+    },
+    {
+      "name": "SVK Hair",
+      "description": "Веб-сайт для парикмахерской",
+      "technologies": ["React", "TypeScript"],
+      "live": "https://svkhair.ru/",
+      "github": "https://github.com/JavelinSx/izueva",
+      "type": "Коммерческий проект"
+    },
+    {
+      "name": "Gorodook",
+      "description": "Веб-приложение",
+      "technologies": ["Vue", "TypeScript"],
+      "live": "https://gorodook.ru/",
+      "github": "https://github.com/JavelinSx/mirHouseVue",
+      "type": "Коммерческий проект"
+    },
+    {
+      "name": "L Studio",
+      "description": "Веб-сайт студии",
+      "technologies": ["React", "TypeScript"],
+      "live": "https://lstudioeva.ru/",
+      "github": "https://github.com/JavelinSx/l-studio",
+      "type": "Коммерческий проект"
+    },
+    {
+      "name": "Система опроса пациентов",
+      "description": "Полнофункциональная система управления опросами с авторизацией",
+      "technologies": ["React", "TypeScript", "Redux", "MongoDB", "Express"],
+      "github": "https://github.com/JavelinSx/medicine-2.0",
+      "type": "Личный проект"
+    }
+  ],
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Vue.js",
+    "Node.js",
+    "MongoDB",
+    "Express",
+    "HTML5",
+    "CSS3",
+    "Git",
+    "Redux",
+    "Pinia",
+    "Nuxt",
+    "Next.js"
+  ]
+}
