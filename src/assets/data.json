@@ -126,6 +126,7 @@
           "icon": "mdi-nodejs"
         }
       ],
+      "live": "None",
       "github": "https://github.com/JavelinSx/medicine-2.0",
       "type": "Личный проект"
     }
