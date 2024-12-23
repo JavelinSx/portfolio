@@ -3,7 +3,38 @@
     {
       "name": "Chess Nexus",
       "description": "Fullstack шахматное приложение",
-      "technologies": ["Nuxt3", "Nitro"],
+      "technologies": [
+        {
+          "name": "Nuxt3",
+          "color": "green",
+          "icon": "mdi-nuxt"
+        },
+        {
+          "name": "Nitro",
+          "color": "green-darken-2",
+          "icon": "mdi-server"
+        },
+        {
+          "name": "MongoDB",
+          "color": "green-darken-2",
+          "icon": "mdi-database"
+        },
+        {
+          "name": "Pinia",
+          "color": "yellow",
+          "icon": "mdi-pine-tree"
+        },
+        {
+          "name": "SSE",
+          "color": "blue",
+          "icon": "mdi-connection"
+        },
+        {
+          "name": "Auth token [ Github, VK, Google ]",
+          "color": "grey",
+          "icon": "mdi-account-key"
+        }
+      ],
       "live": "https://chessnexus.ru/",
       "github": "https://github.com/JavelinSx/chess",
       "type": "Коммерческий проект"
@@ -11,7 +42,18 @@
     {
       "name": "SVK Hair",
       "description": "Веб-сайт для парикмахерской",
-      "technologies": ["React", "TypeScript"],
+      "technologies": [
+        {
+          "name": "React",
+          "color": "blue-lighten-1",
+          "icon": "mdi-react"
+        },
+        {
+          "name": "TypeScript",
+          "color": "blue-darken-2",
+          "icon": "mdi-language-typescript"
+        }
+      ],
       "live": "https://svkhair.ru/",
       "github": "https://github.com/JavelinSx/izueva",
       "type": "Коммерческий проект"
@@ -19,7 +61,18 @@
     {
       "name": "Gorodook",
       "description": "Веб-приложение",
-      "technologies": ["Vue", "TypeScript"],
+      "technologies": [
+        {
+          "name": "Vue",
+          "color": "green",
+          "icon": "mdi-vuejs"
+        },
+        {
+          "name": "TypeScript",
+          "color": "blue-darken-2",
+          "icon": "mdi-language-typescript"
+        }
+      ],
       "live": "https://gorodook.ru/",
       "github": "https://github.com/JavelinSx/mirHouseVue",
       "type": "Коммерческий проект"
@@ -27,7 +80,18 @@
     {
       "name": "L Studio",
       "description": "Веб-сайт студии",
-      "technologies": ["React", "TypeScript"],
+      "technologies": [
+        {
+          "name": "React",
+          "color": "blue-lighten-1",
+          "icon": "mdi-react"
+        },
+        {
+          "name": "TypeScript",
+          "color": "blue-darken-2",
+          "icon": "mdi-language-typescript"
+        }
+      ],
       "live": "https://lstudioeva.ru/",
       "github": "https://github.com/JavelinSx/l-studio",
       "type": "Коммерческий проект"
@@ -35,7 +99,33 @@
     {
       "name": "Система опроса пациентов",
       "description": "Полнофункциональная система управления опросами с авторизацией",
-      "technologies": ["React", "TypeScript", "Redux", "MongoDB", "Express"],
+      "technologies": [
+        {
+          "name": "React",
+          "color": "blue-lighten-1",
+          "icon": "mdi-react"
+        },
+        {
+          "name": "TypeScript",
+          "color": "blue-darken-2",
+          "icon": "mdi-language-typescript"
+        },
+        {
+          "name": "Redux",
+          "color": "purple",
+          "icon": "mdi-state-machine"
+        },
+        {
+          "name": "MongoDB",
+          "color": "green-darken-2",
+          "icon": "mdi-database"
+        },
+        {
+          "name": "Express",
+          "color": "grey",
+          "icon": "mdi-nodejs"
+        }
+      ],
       "github": "https://github.com/JavelinSx/medicine-2.0",
       "type": "Личный проект"
     }
