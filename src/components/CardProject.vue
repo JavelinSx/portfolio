@@ -1,7 +1,28 @@
 <template>
+  <v-row>
+    <v-col cols="12" sm="4" md="12">
+      <v-card class="m-4" title="Тип проекта">
+        <v-card-item class="flex flex-row justify-center">
+          <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Личный проект' ? 'elevated' : 'tonal'"
+            @click="toggleProjectTypeFilter('Личный проект')">
+            Личные проекты
+          </v-chip>
+          <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Коммерческий проект' ? 'elevated' : 'tonal'"
+            @click="toggleProjectTypeFilter('Коммерческий проект')">
+            Коммерческие проекты
+          </v-chip>
+          <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Тестовый проект' ? 'elevated' : 'tonal'"
+            @click="toggleProjectTypeFilter('Тестовый проект')">
+            Тестовые проекты
+          </v-chip>
+        </v-card-item>
+
+      </v-card>
+    </v-col>
+  </v-row>
   <!-- Filters -->
   <v-row v-if="selectedTechnologies.length">
-    <v-col cols="12" sm="4" md="6">
+    <v-col cols="12" sm="4" md="12">
       <v-card class="m-4" title="Фильтр по технологиям">
         <v-card-item>
           <v-chip v-for="tech in selectedTechnologies" :key="tech.name" :color="tech.color" class="p-4" closable
@@ -16,7 +37,7 @@
 
   <!-- Projects -->
   <v-row v-for="project in filteredProjects" :key="project.name" align-center justify-center justify-space-between>
-    <v-col cols="12" sm="4" md="6">
+    <v-col cols="12" sm="4" md="12">
       <v-card class="m-4 flex flex-col md:flex-row" :title="project.name" :subtitle="project.type" elevation="10">
         <v-card-text class="flex flex-col md:flex-row min-h-[300px]">
 
@@ -64,20 +85,33 @@ interface Project {
 
 const originalProjects = ref<Project[]>(data.projects)
 const selectedTechnologies = ref<Tech[]>([])
+const selectedProjectType = ref<string | null>(null)
 
 const filteredProjects = computed(() => {
-  if (selectedTechnologies.value.length === 0) {
-    return originalProjects.value
+  let filtered = originalProjects.value
+
+  // Фильтрация по типу проекта
+  if (selectedProjectType.value) {
+    filtered = filtered.filter(project => project.type === selectedProjectType.value)
   }
 
-  return originalProjects.value.filter((project) => {
-    return project.technologies.some((projectTech) => {
-      return selectedTechnologies.value.some(
-        (selectedTech) => selectedTech.name === projectTech.name
-      )
+  // Фильтрация по технологиям
+  if (selectedTechnologies.value.length > 0) {
+    filtered = filtered.filter((project) => {
+      return selectedTechnologies.value.every((selectedTech) => {
+        return project.technologies.some(
+          (projectTech) => selectedTech.name === projectTech.name
+        )
+      })
     })
-  })
+  }
+
+  return filtered
 })
+
+const toggleProjectTypeFilter = (type: string) => {
+  selectedProjectType.value = selectedProjectType.value === type ? null : type
+}
 
 const projectLinks = (project: Project) => [
   {
