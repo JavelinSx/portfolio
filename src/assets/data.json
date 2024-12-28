@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Chess Nexus",
-      "description": "Fullstack шахматное приложение",
+      "description": "Fullstack шахматное приложение. Ссылка на прод активна, но сервер отключен (могу включить по требованию). В самом приложение реализовано всё что касается игры в шахматы, вся логика и правила. Допльнительно реализованы система статистики, друзья, чат, ранговая система, смена языка. Подробное описание есть на git",
       "technologies": [
         {
           "name": "Nuxt3",
@@ -56,7 +56,7 @@
     },
     {
       "name": "SVK Hair",
-      "description": "Веб-сайт для парикмахерской",
+      "description": "Веб-сайт для студии парикмахера-стилиста",
       "technologies": [
         {
           "name": "React",
@@ -75,7 +75,7 @@
     },
     {
       "name": "L Studio",
-      "description": "Веб-сайт студии",
+      "description": "Веб-сайт для парикмахерской студии",
       "technologies": [
         {
           "name": "React",
@@ -128,7 +128,7 @@
     },
     {
       "name": "Sirius",
-      "description": "Веб-приложение на Next.js Тестовый аккаунт login - miha@mail.ru password - test",
+      "description": "Не адавптивное Веб-приложение на Next.js Тестовый аккаунт login - miha@mail.ru password - test",
       "technologies": [
         {
           "name": "Next.js",
@@ -210,7 +210,7 @@
     },
     {
       "name": "Pleskadastr",
-      "description": "Nuxt 3 приложение с Vuetify",
+      "description": "Nuxt 3 приложение с Vuetify (В разработке)",
       "technologies": [
         {
           "name": "Nuxt 3",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Inventory",
-      "description": "Nuxt 3 приложение с Pinia",
+      "description": "Не адавптивное  Nuxt 3 приложение с Pinia",
       "technologies": [
         {
           "name": "Nuxt 3",
@@ -306,7 +306,7 @@
     },
     {
       "name": "Gorodook Vue",
-      "description": "Vue 3 приложение с анимациями",
+      "description": "Vue 3 лэндинг Бронирования квартир, с настраиваемым фильтром",
       "technologies": [
         {
           "name": "Vue 3",
