@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindcssMotion from "tailwindcss-motion";
 export default {
   content: [
     './src/components/**/**.vue'
@@ -6,6 +7,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [tailwindcssMotion],
 }
 
