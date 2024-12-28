@@ -1,74 +1,78 @@
 <template>
-  <v-row dense>
-    <v-col dense cols="12" sm="4" md="12">
-      <v-card class="m-4 mb-0" :color="getRandomColor()">
-        <v-card-item class="flex flex-row justify-center">
-          <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Личный проект' ? 'elevated' : 'tonal'"
-            @click="toggleProjectTypeFilter('Личный проект')">
-            Личные проекты
-          </v-chip>
-          <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Коммерческий проект' ? 'elevated' : 'tonal'"
-            @click="toggleProjectTypeFilter('Коммерческий проект')">
-            Коммерческие проекты
-          </v-chip>
-          <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Тестовый проект' ? 'elevated' : 'tonal'"
-            @click="toggleProjectTypeFilter('Тестовый проект')">
-            Тестовые проекты
-          </v-chip>
-        </v-card-item>
+  <div class="max-w-[1024px]">
+    <v-row dense>
+      <v-col dense cols="12" sm="4" md="12">
+        <v-card class="m-4 mb-0" :color="getRandomColor()">
+          <v-card-item class="flex flex-row justify-center">
+            <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Личный проект' ? 'elevated' : 'tonal'"
+              @click="toggleProjectTypeFilter('Личный проект')">
+              Личные проекты
+            </v-chip>
+            <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Коммерческий проект' ? 'elevated' : 'tonal'"
+              @click="toggleProjectTypeFilter('Коммерческий проект')">
+              Коммерческие проекты
+            </v-chip>
+            <v-chip class="mr-2 mb-2" :variant="selectedProjectType === 'Тестовый проект' ? 'elevated' : 'tonal'"
+              @click="toggleProjectTypeFilter('Тестовый проект')">
+              Тестовые проекты
+            </v-chip>
+          </v-card-item>
 
-      </v-card>
-    </v-col>
-  </v-row>
-  <!-- Filters -->
-  <v-row dense v-if="selectedTechnologies.length">
-    <v-col dense cols="12" sm="4" md="12">
-      <v-card class="m-4">
-        <v-card-item>
-          <v-chip v-for="tech in selectedTechnologies" :key="tech.name" :color="tech.color" class="p-4 " closable
-            @click:close="removeTechnologyFilter(tech)">
-            <v-icon start>{{ tech.icon }}</v-icon>
-            {{ tech.name }}
-          </v-chip>
-        </v-card-item>
-      </v-card>
-    </v-col>
-  </v-row>
-
-  <!-- Projects -->
-  <v-row dense v-for="(project, index) in filteredProjects" :key="project.name" align-center justify-center
-    justify-space-between :class="getMotionClass(index)" :style="`animation-delay: ${index * 150}ms`">
-    <v-col dense cols="12" sm="4" md="12">
-      <v-card class="m-4 mt-0 mb-0 flex flex-col md:flex-row" elevation="10" :color="getRandomColor()">
-        <v-card-title class="motion-translate-x-in-[-100%] motion-translate-y-in-[0%]"
-          :style="`animation-delay: 600ms`">{{ project.name }}</v-card-title>
-        <v-card-subtitle class="motion-translate-x-in-[100%] motion-translate-y-in-[0%]"
-          :style="`animation-delay: 600ms`">{{ project.type }}</v-card-subtitle>
-        <v-card-text class="flex flex-col md:flex-row min-h-[300px]">
-
-          <div class="flex gap-2 flex-wrap max-w-80 self-start">
-            <p class="m-4 w-full motion-scale-in-[0.1] motion-opacity-in-[0%] motion-duration-[0.55s]/scale motion-delay-[0.20s]/scale"
-              :style="`animation-delay: 600ms`">{{ project.description }}</p>
-            <v-chip :class="`motion-preset-bounce`" :style="`animation-delay: ${index * 75 + 600}ms`"
-              v-for="(tech, index) in project.technologies" :key="tech.name" :color="tech.color"
-              @click="addTechnologyFilter(tech)" variant="elevated">
+        </v-card>
+      </v-col>
+    </v-row>
+    <!-- Filters -->
+    <v-row dense v-if="selectedTechnologies.length">
+      <v-col dense cols="12" sm="4" md="12">
+        <v-card class="m-4 mt-0 mb-0" :color="getRandomColor()">
+          <v-card-item>
+            <v-chip v-for="tech in selectedTechnologies" :key="tech.name" :color="tech.color" class="p-4 " closable
+              variant="elevated" @click:close="removeTechnologyFilter(tech)">
               <v-icon start>{{ tech.icon }}</v-icon>
               {{ tech.name }}
             </v-chip>
-          </div>
+          </v-card-item>
+        </v-card>
+      </v-col>
+    </v-row>
 
-          <divider-main orientation="horizontal" class="mt-3 mb-2 md:hidden" />
-          <divider-main orientation="vertical" class="ml-2 mr-2 hidden md:block" />
+    <!-- Projects -->
+    <v-row dense v-for="(project, index) in filteredProjects" :key="project.name" align-center justify-center
+      justify-space-between :class="getMotionClass(index)" :style="`animation-delay: ${index * 150}ms`">
+      <v-col dense cols="12" sm="4" md="12">
+        <v-card class="m-4 mt-0 mb-0 flex flex-col md:flex-row" elevation="10" :color="getRandomColor()">
+          <v-card-title class="motion-translate-x-in-[-100%] motion-translate-y-in-[0%]"
+            :style="`animation-delay: 600ms`">{{ project.name }}</v-card-title>
+          <v-card-subtitle class="motion-translate-x-in-[100%] motion-translate-y-in-[0%]"
+            :style="`animation-delay: 600ms`">{{ project.type }}</v-card-subtitle>
+          <v-card-text class="flex flex-col md:flex-row min-h-[300px]">
 
-          <div>
-            <v-card v-for="link in projectLinks(project)" :key="link.title" v-bind="link" :color="getRandomColor()"
-              class="m-2 motion-translate-x-in-[0%] motion-translate-y-in-[1000%]" :style="`animation-delay: 1000ms`"
-              append-icon="mdi-open-in-new" prepend-icon="mdi-github" rel="noopener" target="_blank" />
-          </div>
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+            <div class="flex gap-2 flex-wrap max-w-80 self-start">
+              <p class="w-full motion-scale-in-[0.1] motion-opacity-in-[0%] motion-duration-[0.55s]/scale motion-delay-[0.20s]/scale"
+                :style="`animation-delay: 600ms`">{{ project.description }}</p>
+              <v-chip :class="`motion-preset-bounce`" :style="`animation-delay: ${index * 75 + 600}ms`"
+                v-for="(tech, index) in project.technologies" :key="tech.name" :color="tech.color"
+                @click="addTechnologyFilter(tech)" variant="elevated">
+                <v-icon start>{{ tech.icon }}</v-icon>
+                {{ tech.name }}
+              </v-chip>
+            </div>
+
+            <divider-main orientation="horizontal" class="mt-3 mb-2 md:hidden" />
+            <divider-main orientation="vertical" class="ml-2 mr-2 hidden md:block" />
+
+            <div>
+              <v-card v-for="(link, index) in projectLinks(project)" :key="link.title" v-bind="link"
+                :color="getRandomColor()" class="m-2 motion-translate-x-in-[0%] motion-translate-y-in-[1000%]"
+                :style="`animation-delay: 1000ms`" append-icon="mdi-open-in-new"
+                :prepend-icon="index === 0 ? 'mdi-github' : 'mdi-web'" rel="noopener" target="_blank" />
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </div>
+
 </template>
 
 <script setup lang="ts">
