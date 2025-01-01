@@ -87,14 +87,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="gradient-container" :style="{ background: currentGradient }">
-    <header></header>
+  <div class="gradient-container p-2 pb-3" :style="{ background: currentGradient }">
     <CardProject />
   </div>
 </template>
 
 <style>
 .gradient-container {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +102,7 @@ onMounted(() => {
   position: absolute;
   top: 0;
   left: 0;
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
   background-size: 200% 200%;
   animation: gradientPosition 8s ease infinite;
