@@ -1,0 +1,472 @@
+{
+  "projects": [
+    {
+      "id": "chess-nexus",
+      "name": "Chess Nexus",
+      "slug": "chess-nexus",
+      "description": "Полнофункциональное шахматное приложение с возможностью игры онлайн, системой рейтингов, друзьями и чатом. Реализована вся логика шахматной игры, включая специальные ходы и правила. Поддержка многопользовательских партий в реальном времени.",
+      "shortDescription": "Fullstack шахматное приложение с онлайн игрой",
+      "type": "Личный проект",
+      "status": "completed",
+      "featured": true,
+      "technologies": [
+        { "name": "Nuxt 3", "icon": "mdi-nuxt", "color": "#00DC82" },
+        { "name": "Vue 3", "icon": "mdi-vuejs", "color": "#4FC08D" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "Nitro", "icon": "mdi-server", "color": "#00DC82" },
+        { "name": "MongoDB", "icon": "mdi-database", "color": "#47A248" },
+        { "name": "Pinia", "icon": "mdi-pine-tree", "color": "#FFD859" },
+        { "name": "SSE", "icon": "mdi-connection", "color": "#3b82f6" },
+        { "name": "i18next", "icon": "mdi-translate", "color": "#26A69A" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/chess-nexus/main.jpg",
+          "alt": "Chess Nexus главная страница",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/chess",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        },
+        {
+          "type": "demo",
+          "url": "https://chessnexus.ru/",
+          "title": "Live Demo",
+          "description": "Демо версия (сервер отключен)"
+        }
+      ],
+      "startDate": "2023-06",
+      "endDate": "2024-02",
+      "challenges": [
+        "Реализация сложной логики шахматной игры",
+        "Синхронизация состояния игры между клиентами",
+        "Оптимизация производительности для real-time игры"
+      ],
+      "solutions": [
+        "Создание отдельного движка для шахматной логики",
+        "Использование Server-Sent Events для real-time обновлений",
+        "Оптимизация алгоритмов проверки ходов"
+      ],
+      "results": [
+        "Полностью рабочее шахматное приложение",
+        "Поддержка многопользовательских партий",
+        "Система рейтингов и статистики"
+      ],
+      "metrics": [
+        { "label": "Технологий", "value": 8, "icon": "mdi-code-tags" },
+        { "label": "Месяцев разработки", "value": 8, "icon": "mdi-calendar" },
+        { "label": "Компонентов", "value": "50+", "icon": "mdi-view-grid" }
+      ]
+    },
+    {
+      "id": "svk-hair",
+      "name": "SVK Hair",
+      "slug": "svk-hair",
+      "description": "Современный веб-сайт для студии парикмахера-стилиста. Включает галерею работ, информацию об услугах, калькулятор стоимости и форму записи. Адаптивный дизайн и оптимизация для SEO.",
+      "shortDescription": "Сайт студии парикмахера-стилиста",
+      "type": "Коммерческий проект",
+      "status": "completed",
+      "featured": true,
+      "technologies": [
+        { "name": "React", "icon": "mdi-react", "color": "#61DAFB" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "CSS3", "icon": "mdi-language-css3", "color": "#1572B6" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/svk-hair/main.jpg",
+          "alt": "SVK Hair главная страница",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "website",
+          "url": "https://svkhair.ru/",
+          "title": "Сайт",
+          "description": "Действующий сайт студии"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/izueva",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2023-03",
+      "endDate": "2023-04",
+      "teamSize": 1,
+      "role": "Frontend Developer",
+      "challenges": [
+        "Создание привлекательного дизайна для beauty-индустрии",
+        "Интеграция калькулятора стоимости услуг",
+        "SEO оптимизация для локального бизнеса"
+      ],
+      "solutions": [
+        "Современный дизайн с акцентом на визуал",
+        "Динамический калькулятор на JavaScript",
+        "Оптимизация контента и метаданных"
+      ],
+      "results": [
+        "Увеличение онлайн присутствия студии",
+        "Автоматизация расчета стоимости услуг",
+        "Положительные отзывы клиентов"
+      ],
+      "metrics": [
+        { "label": "Страниц", "value": 5, "icon": "mdi-file-document" },
+        { "label": "Недель разработки", "value": 3, "icon": "mdi-calendar" },
+        { "label": "Компонентов", "value": "15+", "icon": "mdi-view-grid" }
+      ]
+    },
+    {
+      "id": "gorodook",
+      "name": "Gorodook Vue",
+      "slug": "gorodook-vue",
+      "description": "Лендинг для бронирования квартир с продвинутой системой фильтрации. Включает интерактивные фильтры по цене, типу жилья, удобствам. Анимации и современный дизайн.",
+      "shortDescription": "Лендинг бронирования квартир с фильтрами",
+      "type": "Коммерческий проект",
+      "status": "completed",
+      "featured": false,
+      "technologies": [
+        { "name": "Vue 3", "icon": "mdi-vuejs", "color": "#4FC08D" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "Vuetify", "icon": "mdi-vuetify", "color": "#1867C0" },
+        { "name": "AnimeJS", "icon": "mdi-animation", "color": "#FF6B6B" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/gorodook/main.jpg",
+          "alt": "Gorodook главная страница",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "website",
+          "url": "https://gorodook.ru/",
+          "title": "Сайт",
+          "description": "Действующий сайт"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/mirHouseVue.git",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2023-01",
+      "endDate": "2023-02",
+      "metrics": [
+        { "label": "Фильтров", "value": 8, "icon": "mdi-filter" },
+        { "label": "Недель разработки", "value": 4, "icon": "mdi-calendar" }
+      ]
+    },
+    {
+      "id": "sirius",
+      "name": "Sirius",
+      "slug": "sirius",
+      "description": "Веб-приложение на Next.js с системой авторизации, интернационализацией и современным UI. Демонстрация возможностей Next.js и Redux Toolkit.",
+      "shortDescription": "Next.js приложение с авторизацией",
+      "type": "Тестовый проект",
+      "status": "completed",
+      "featured": false,
+      "technologies": [
+        { "name": "Next.js", "icon": "mdi-react", "color": "#000000" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "Redux Toolkit", "icon": "mdi-state-machine", "color": "#764ABC" },
+        { "name": "i18next", "icon": "mdi-translate", "color": "#26A69A" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/sirius/main.jpg",
+          "alt": "Sirius главная страница",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "demo",
+          "url": "https://sirius-azure.vercel.app/",
+          "title": "Live Demo",
+          "description": "Тестовый аккаунт: miha@mail.ru / test"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/sirius.git",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2023-08",
+      "endDate": "2023-09",
+      "metrics": [
+        { "label": "Языков", "value": 2, "icon": "mdi-translate" },
+        { "label": "Недель разработки", "value": 3, "icon": "mdi-calendar" }
+      ]
+    },
+    {
+      "id": "morty",
+      "name": "Morty",
+      "slug": "morty",
+      "description": "Vue 3 приложение с GraphQL интеграцией для работы с Rick and Morty API. Демонстрация работы с GraphQL запросами, состоянием Pinia и современным Vue 3.",
+      "shortDescription": "Vue 3 приложение с GraphQL",
+      "type": "Тестовый проект",
+      "status": "completed",
+      "featured": false,
+      "technologies": [
+        { "name": "Vue 3", "icon": "mdi-vuejs", "color": "#4FC08D" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "GraphQL", "icon": "mdi-graphql", "color": "#E10098" },
+        { "name": "Pinia", "icon": "mdi-pine-tree", "color": "#FFD859" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/morty/main.jpg",
+          "alt": "Morty приложение",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "demo",
+          "url": "https://javelinsx.github.io/testMorty/",
+          "title": "Live Demo",
+          "description": "Рабочее приложение"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/testMorty.git",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2023-05",
+      "endDate": "2023-05",
+      "metrics": [
+        { "label": "GraphQL запросов", "value": 5, "icon": "mdi-graphql" },
+        { "label": "Недель разработки", "value": 2, "icon": "mdi-calendar" }
+      ]
+    },
+    {
+      "id": "three-next",
+      "name": "Three Next",
+      "slug": "three-next",
+      "description": "3D веб-приложение на Next.js с использованием Three.js. Демонстрация возможностей WebGL, 3D анимаций и интерактивных сцен в браузере.",
+      "shortDescription": "3D веб-приложение на Next.js",
+      "type": "Тестовый проект",
+      "status": "completed",
+      "featured": true,
+      "technologies": [
+        { "name": "Next.js", "icon": "mdi-react", "color": "#000000" },
+        { "name": "Three.js", "icon": "mdi-video-3d", "color": "#000000" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "WebGL", "icon": "mdi-cube", "color": "#990000" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/three-next/main.jpg",
+          "alt": "Three Next 3D сцена",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "demo",
+          "url": "https://javelinsx.github.io/three/",
+          "title": "Live Demo",
+          "description": "Интерактивная 3D сцена"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/three.git",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2023-07",
+      "endDate": "2023-07",
+      "challenges": [
+        "Изучение Three.js и WebGL",
+        "Оптимизация 3D производительности",
+        "Интеграция с Next.js"
+      ],
+      "solutions": [
+        "Пошаговое изучение документации Three.js",
+        "Оптимизация геометрии и текстур",
+        "Правильная настройка SSR для 3D контента"
+      ],
+      "metrics": [
+        { "label": "3D объектов", "value": 10, "icon": "mdi-cube" },
+        { "label": "Недель изучения", "value": 4, "icon": "mdi-school" }
+      ]
+    },
+    {
+      "id": "medicine-system",
+      "name": "Система опроса пациентов",
+      "slug": "medicine-system",
+      "description": "Полнофункциональная система управления опросами с авторизацией, ролевой моделью и сбором статистики. Закрытая регистрация, различные типы форм, панель администратора.",
+      "shortDescription": "Система управления медицинскими опросами",
+      "type": "Личный проект",
+      "status": "archived",
+      "featured": false,
+      "technologies": [
+        { "name": "React", "icon": "mdi-react", "color": "#61DAFB" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" },
+        { "name": "Redux", "icon": "mdi-state-machine", "color": "#764ABC" },
+        { "name": "MongoDB", "icon": "mdi-database", "color": "#47A248" },
+        { "name": "Express", "icon": "mdi-nodejs", "color": "#339933" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/medicine/main.jpg",
+          "alt": "Система опроса пациентов",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/medicine-2.0",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2022-06",
+      "endDate": "2022-12",
+      "challenges": [
+        "Сложная ролевая модель доступа",
+        "Безопасность медицинских данных",
+        "Масштабируемая архитектура форм"
+      ],
+      "solutions": [
+        "JWT авторизация с refresh токенами",
+        "Шифрование чувствительных данных",
+        "Компонентная система форм"
+      ],
+      "metrics": [
+        { "label": "Ролей", "value": 4, "icon": "mdi-account-group" },
+        { "label": "Типов форм", "value": 8, "icon": "mdi-form-select" },
+        { "label": "Месяцев разработки", "value": 6, "icon": "mdi-calendar" }
+      ]
+    },
+    {
+      "id": "pleskadastr",
+      "name": "Pleskadastr",
+      "slug": "pleskadastr",
+      "description": "Nuxt 3 приложение с Vuetify для кадастровых услуг. Современный дизайн, формы обратной связи, информация об услугах. В процессе разработки.",
+      "shortDescription": "Сайт кадастровых услуг на Nuxt 3",
+      "type": "Коммерческий проект",
+      "status": "in_progress",
+      "featured": false,
+      "technologies": [
+        { "name": "Nuxt 3", "icon": "mdi-nuxt", "color": "#00DC82" },
+        { "name": "Vuetify", "icon": "mdi-vuetify", "color": "#1867C0" },
+        { "name": "Pinia", "icon": "mdi-pine-tree", "color": "#FFD859" },
+        { "name": "TypeScript", "icon": "mdi-language-typescript", "color": "#3178C6" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/pleskadastr/main.jpg",
+          "alt": "Pleskadastr сайт",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "website",
+          "url": "https://pleskadastr.ru/",
+          "title": "Сайт",
+          "description": "Сайт в разработке"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/kadastr-lite-vue.git",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2024-01",
+      "metrics": [
+        { "label": "Услуг", "value": 12, "icon": "mdi-briefcase" },
+        { "label": "Страниц", "value": 8, "icon": "mdi-file-document" }
+      ]
+    },
+    {
+      "id": "pizza-website",
+      "name": "Pizza Website",
+      "slug": "pizza-website",
+      "description": "Vanilla JavaScript сайт пиццерии с jQuery и Webpack. Интерактивное меню, корзина покупок, адаптивный дизайн. Демонстрация навыков работы с чистым JavaScript.",
+      "shortDescription": "Сайт пиццерии на Vanilla JS",
+      "type": "Тестовый проект",
+      "status": "completed",
+      "featured": false,
+      "technologies": [
+        { "name": "JavaScript", "icon": "mdi-language-javascript", "color": "#F7DF1E" },
+        { "name": "jQuery", "icon": "mdi-jquery", "color": "#0769AD" },
+        { "name": "Webpack", "icon": "mdi-webpack", "color": "#8DD6F9" },
+        { "name": "SCSS", "icon": "mdi-sass", "color": "#CF649A" }
+      ],
+      "images": [
+        {
+          "url": "/images/projects/pizza/main.jpg",
+          "alt": "Pizza Website",
+          "type": "screenshot",
+          "primary": true
+        }
+      ],
+      "links": [
+        {
+          "type": "demo",
+          "url": "https://javelinsx.github.io/testPizza/",
+          "title": "Live Demo",
+          "description": "Действующий сайт"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/JavelinSx/testPizza.git",
+          "title": "GitHub",
+          "description": "Исходный код проекта"
+        }
+      ],
+      "startDate": "2022-04",
+      "endDate": "2022-05",
+      "metrics": [
+        { "label": "Пицц в меню", "value": 24, "icon": "mdi-food" },
+        { "label": "Недель разработки", "value": 3, "icon": "mdi-calendar" }
+      ]
+    }
+  ],
+  "projectStats": {
+    "totalProjects": 9,
+    "completedProjects": 7,
+    "inProgressProjects": 1,
+    "archivedProjects": 1,
+    "featuredProjects": 4,
+    "commercialProjects": 3,
+    "personalProjects": 2,
+    "testProjects": 4
+  },
+  "technologies": {
+    "frontend": ["Vue 3", "React", "TypeScript", "JavaScript", "HTML5", "CSS3"],
+    "frameworks": ["Nuxt 3", "Next.js", "Vue 3", "React"],
+    "styling": ["Tailwind CSS", "Vuetify", "SCSS", "CSS3"],
+    "stateManagement": ["Pinia", "Redux", "Redux Toolkit"],
+    "backend": ["Node.js", "Express", "Nitro"],
+    "database": ["MongoDB"],
+    "tools": ["Git", "Vite", "Webpack", "Figma"],
+    "other": ["GraphQL", "Three.js", "i18next", "jQuery"]
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "skills": [
+    {
+      "id": "vue3",
+      "name": "Vue 3",
+      "level": 90,
+      "category": "frameworks",
+      "icon": "mdi-vuejs",
+      "color": "#4FC08D",
+      "description": "Composition API, реактивность, компоненты",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "morty", "gorodook", "pleskadastr"]
+    },
+    {
+      "id": "nuxt3",
+      "name": "Nuxt 3",
+      "level": 85,
+      "category": "frameworks",
+      "icon": "mdi-nuxt",
+      "color": "#00DC82",
+      "description": "SSR, SSG, серверные компоненты",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "pleskadastr", "inventory"]
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "level": 80,
+      "category": "frameworks",
+      "icon": "mdi-react",
+      "color": "#61DAFB",
+      "description": "Hooks, Context API, функциональные компоненты",
+      "yearsOfExperience": 2,
+      "projects": ["svk-hair", "l-studio", "medicine-system"]
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "level": 85,
+      "category": "languages",
+      "icon": "mdi-language-typescript",
+      "color": "#3178C6",
+      "description": "Типизация, generics, utility types",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "sirius", "morty", "svk-hair"]
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "level": 90,
+      "category": "languages",
+      "icon": "mdi-language-javascript",
+      "color": "#F7DF1E",
+      "description": "ES6+, асинхронность, модули",
+      "yearsOfExperience": 3,
+      "projects": ["pizza-website", "all-projects"]
+    },
+    {
+      "id": "html5",
+      "name": "HTML5",
+      "level": 95,
+      "category": "frontend",
+      "icon": "mdi-language-html5",
+      "color": "#E34F26",
+      "description": "Семантическая разметка, accessibility",
+      "yearsOfExperience": 3,
+      "projects": ["all-projects"]
+    },
+    {
+      "id": "css3",
+      "name": "CSS3",
+      "level": 90,
+      "category": "frontend",
+      "icon": "mdi-language-css3",
+      "color": "#1572B6",
+      "description": "Grid, Flexbox, анимации, responsive",
+      "yearsOfExperience": 3,
+      "projects": ["all-projects"]
+    },
+    {
+      "id": "tailwindcss",
+      "name": "Tailwind CSS",
+      "level": 85,
+      "category": "frontend",
+      "icon": "mdi-tailwind",
+      "color": "#06B6D4",
+      "description": "Utility-first CSS, кастомизация",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "portfolio"]
+    },
+    {
+      "id": "vuetify",
+      "name": "Vuetify",
+      "level": 80,
+      "category": "libraries",
+      "icon": "mdi-vuetify",
+      "color": "#1867C0",
+      "description": "Material Design компоненты",
+      "yearsOfExperience": 2,
+      "projects": ["pleskadastr", "gorodook", "portfolio"]
+    },
+    {
+      "id": "pinia",
+      "name": "Pinia",
+      "level": 85,
+      "category": "libraries",
+      "icon": "mdi-pine-tree",
+      "color": "#FFD859",
+      "description": "State management для Vue",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "morty", "inventory"]
+    },
+    {
+      "id": "redux",
+      "name": "Redux",
+      "level": 75,
+      "category": "libraries",
+      "icon": "mdi-state-machine",
+      "color": "#764ABC",
+      "description": "State management, Redux Toolkit",
+      "yearsOfExperience": 1,
+      "projects": ["medicine-system", "sirius"]
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "level": 75,
+      "category": "database",
+      "icon": "mdi-database",
+      "color": "#47A248",
+      "description": "NoSQL, агрегация, индексы",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "medicine-system"]
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "level": 70,
+      "category": "backend",
+      "icon": "mdi-nodejs",
+      "color": "#339933",
+      "description": "Express, Nitro, API разработка",
+      "yearsOfExperience": 2,
+      "projects": ["chess-nexus", "medicine-system"]
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "level": 85,
+      "category": "tools",
+      "icon": "mdi-git",
+      "color": "#F05032",
+      "description": "Версионирование, ветвление, merge",
+      "yearsOfExperience": 3,
+      "projects": ["all-projects"]
+    },
+    {
+      "id": "vite",
+      "name": "Vite",
+      "level": 80,
+      "category": "tools",
+      "icon": "mdi-lightning-bolt",
+      "color": "#646CFF",
+      "description": "Быстрая сборка, HMR, плагины",
+      "yearsOfExperience": 2,
+      "projects": ["most-projects"]
+    },
+    {
+      "id": "webpack",
+      "name": "Webpack",
+      "level": 65,
+      "category": "tools",
+      "icon": "mdi-webpack",
+      "color": "#8DD6F9",
+      "description": "Сборка модулей, оптимизация",
+      "yearsOfExperience": 1,
+      "projects": ["pizza-website"]
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "level": 70,
+      "category": "design",
+      "icon": "mdi-figma",
+      "color": "#F24E1E",
+      "description": "UI/UX дизайн, прототипирование",
+      "yearsOfExperience": 2,
+      "projects": ["design-work"]
+    },
+    {
+      "id": "graphql",
+      "name": "GraphQL",
+      "level": 65,
+      "category": "backend",
+      "icon": "mdi-graphql",
+      "color": "#E10098",
+      "description": "Запросы, мутации, схемы",
+      "yearsOfExperience": 1,
+      "projects": ["morty"]
+    },
+    {
+      "id": "threejs",
+      "name": "Three.js",
+      "level": 60,
+      "category": "libraries",
+      "icon": "mdi-video-3d",
+      "color": "#000000",
+      "description": "3D графика, WebGL",
+      "yearsOfExperience": 1,
+      "projects": ["three-next"]
+    },
+    {
+      "id": "i18n",
+      "name": "i18next",
+      "level": 75,
+      "category": "libraries",
+      "icon": "mdi-translate",
+      "color": "#26A69A",
+      "description": "Интернационализация",
+      "yearsOfExperience": 1,
+      "projects": ["chess-nexus", "sirius"]
+    }
+  ],
+  "skillCategories": {
+    "frontend": {
+      "name": "Frontend",
+      "icon": "mdi-monitor",
+      "color": "#FF6B6B",
+      "description": "Основы веб-разработки"
+    },
+    "frameworks": {
+      "name": "Фреймворки",
+      "icon": "mdi-view-grid",
+      "color": "#4ECDC4",
+      "description": "JavaScript фреймворки"
+    },
+    "languages": {
+      "name": "Языки",
+      "icon": "mdi-code-tags",
+      "color": "#45B7D1",
+      "description": "Языки программирования"
+    },
+    "libraries": {
+      "name": "Библиотеки",
+      "icon": "mdi-package-variant",
+      "color": "#96CEB4",
+      "description": "Вспомогательные библиотеки"
+    },
+    "backend": {
+      "name": "Backend",
+      "icon": "mdi-server",
+      "color": "#FECA57",
+      "description": "Серверные технологии"
+    },
+    "database": {
+      "name": "Базы данных",
+      "icon": "mdi-database",
+      "color": "#FF9FF3",
+      "description": "Хранение данных"
+    },
+    "tools": {
+      "name": "Инструменты",
+      "icon": "mdi-tools",
+      "color": "#54A0FF",
+      "description": "Инструменты разработки"
+    },
+    "design": {
+      "name": "Дизайн",
+      "icon": "mdi-palette",
+      "color": "#5F27CD",
+      "description": "UI/UX дизайн"
+    }
+  }
+}

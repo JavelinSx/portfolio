@@ -1,47 +1,50 @@
-<script setup lang="ts">
-import CardProject from './components/CardProject.vue';
-</script>
-
 <template>
+  <v-app>
+    <!-- Простой лоадер -->
+    <div v-if="isLoading" class="fixed inset-0 flex items-center justify-center bg-hero animate-gradient z-50">
+      <div class="text-center text-white max-w-xs w-full px-5">
+        <v-icon icon="mdi-code-tags" size="48" color="white" class="mb-4" />
+        <h2 class="text-xl font-medium mb-5">Загрузка...</h2>
+        <v-progress-linear indeterminate color="white" class="mb-4" />
+      </div>
+    </div>
 
-  <CardProject />
+    <!-- Основное приложение -->
+    <div v-else class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors-200">
+      <AppHeader />
 
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ProjectSection />
+        <SkillsSection />
+        <ContactSection />
+      </main>
+
+      <AppFooter />
+
+    </div>
+  </v-app>
 </template>
 
-<style>
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import AboutSection from '@/components/AboutSection.vue'
+import ProjectSection from './components/ProjectSection.vue'
+import SkillsSection from './components/SkillsSection.vue'
+import ContactSection from '@/components/ContactSection.vue'
 
-  50% {
-    background-position: 100% 50%;
-  }
+const isLoading = ref(true)
 
-  100% {
-    background-position: 0% 50%;
-  }
-}
+// Простая инициализация
+onMounted(async () => {
+  // Эмуляция загрузки
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  isLoading.value = false
 
-body {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  background: linear-gradient(45deg,
-      #FCA5A5,
-      /* rose-300 */
-      #F472B6,
-      /* pink-400 */
-      #C084FC,
-      /* purple-400 */
-      #818CF8,
-      /* indigo-400 */
-      #60A5FA,
-      /* blue-400 */
-      #FCA5A5
-      /* rose-300 снова для плавного перехода */
-    );
-  background-size: 400% 400%;
-  animation: gradientShift 5s ease infinite;
-}
-</style>
+})
+
+</script>

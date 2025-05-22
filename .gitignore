@@ -1,3 +1,6 @@
+copy-files.ps1
+run-copy.bat
+output_files
 # Logs
 logs
 *.log
