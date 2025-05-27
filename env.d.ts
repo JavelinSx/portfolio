@@ -6,15 +6,18 @@ declare module '*.vue' {
   export default component
 }
 
-declare module '@/assets/data/*.json' {
+declare module '*.json' {
   const value: any
   export default value
 }
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
+  readonly VITE_APP_DESCRIPTION: string
   readonly VITE_API_URL: string
-  // Add more env variables here
+  readonly VITE_CONTACT_EMAIL: string
+  readonly VITE_APP_ENV: string
+  readonly VITE_DEBUG: string
 }
 
 interface ImportMeta {

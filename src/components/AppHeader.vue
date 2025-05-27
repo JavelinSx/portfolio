@@ -1,134 +1,189 @@
 <template>
-  <v-app-bar :class="{ 'shadow-lg': isScrolled }"
-    class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg transition-all-300" fixed app>
-    <v-container>
-      <div class="flex items-center justify-between w-full">
-        <!-- Лого -->
-        <div class="flex items-center cursor-pointer hover-scale transition-all-300" @click="scrollTo('hero')">
-          <v-icon icon="mdi-code-tags" color="primary" class="mr-2" />
-          <span class="text-xl font-semibold text-gray-900 dark:text-white font-['Poppins']">Портфолио</span>
-        </div>
+  <a-layout-header :class="[
+    'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900/90  border-b border-gray-700/30',
 
-        <!-- Навигация на десктопе -->
-        <div class="hidden md:flex items-center space-x-2">
-          <v-btn v-for="item in navItems" :key="item.id"
-            :class="{ 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400': activeSection === item.id }"
-            variant="text" class="transition-colors-200" @click="scrollTo(item.id)">
+  ]">
+    <div class="container-custom md:justify-center flex items-center justify-end h-16 pl-4 pr-4">
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <a-menu mode="horizontal" :selected-keys="[activeSection]" :class="[
+          'border-0',
+          isDark ? 'bg-transparent' : 'bg-transparent'
+        ]" :theme="isDark ? 'dark' : 'light'">
+          <a-menu-item v-for="item in menuItems" :key="item.key" @click="scrollToSection(item.key)"
+            class="text-gray-100 hover:text-blue-500">
             {{ item.label }}
-          </v-btn>
-        </div>
+          </a-menu-item>
+        </a-menu>
+      </div>
 
-        <!-- Переключатель темы и мобильное меню -->
-        <div class="flex items-center space-x-2">
-          <v-btn icon variant="text" class="transition-all-300 hover-scale" @click="toggleTheme">
-            <v-icon :icon="themeIcon" />
-          </v-btn>
+      <!-- Actions -->
+      <div class="flex items-center space-x-3 ">
+        <!-- Theme Toggle -->
+        <a-button type="text" shape="circle" @click="toggleTheme" :class="[
+          'transition-all duration-300 group',
+          isDark
+            ? 'text-gray-300 hover:!text-yellow-400'
+            : 'text-gray-300 hover:!text-yellow-400'
+        ]">
+          <template #icon>
+            <BulbOutlined v-if="isDark" class="group-hover:!text-inherit" />
+            <BulbFilled v-else class="group-hover:!text-inherit" />
+          </template>
+        </a-button>
 
-          <!-- Мобильное меню -->
-          <v-menu v-model="mobileMenu" location="bottom">
-            <template #activator="{ props }">
-              <v-btn v-bind="props" icon="mdi-menu" variant="text" class="md:hidden transition-all-300 hover-scale" />
-            </template>
+        <!-- Mobile Menu -->
+        <a-button type="text" shape="circle" @click="showMobileMenu = !showMobileMenu" :class="[
+          'md:hidden transition-colors',
+          isDark
+            ? 'text-gray-300 hover:text-white hover:bg-gray-800'
+            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+        ]">
+          <template #icon>
+            <MenuOutlined />
+          </template>
+        </a-button>
+      </div>
+    </div>
 
-            <v-list class="bg-white dark:bg-gray-800 shadow-xl rounded-lg">
-              <v-list-item v-for="item in navItems" :key="item.id" class="transition-colors-200"
-                @click="scrollTo(item.id)">
-                <v-list-item-title>{{ item.label }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+    <!-- Mobile Menu Drawer -->
+
+    <transition name="mobile-menu">
+      <div v-if="showMobileMenu" :class="[
+        'overflow-hidden md:hidden mt-[-1px]',
+        isDark ? 'bg-gray-800 shadow-lg shadow-slate-50' : 'bg-gray-100 shadow-lg shadow-slate-500'
+      ]">
+        <a-menu mode="inline" :selected-keys="[activeSection]" :theme="isDark ? 'dark' : 'light'"
+          class="pt-4  mobile-menu-content">
+          <a-menu-item v-for="item in menuItems" :key="item.key" @click="scrollToSection(item.key)">
+            {{ item.label }}
+          </a-menu-item>
+        </a-menu>
+
+        <a-divider :class="isDark ? 'border-gray-600' : 'border-gray-300'" />
+
+        <div class="p-4 space-y-4">
+          <div class="flex items-center space-x-3">
+            <MailOutlined :class="isDark ? 'text-gray-500' : 'text-gray-400'" />
+            <span :class="[
+              'text-sm',
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            ]">zuev499@gmail.com</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <PhoneOutlined :class="isDark ? 'text-gray-500' : 'text-gray-400'" />
+            <span :class="[
+              'text-sm',
+              isDark ? 'text-gray-400' : 'text-gray-600'
+            ]">+7 (921) 673-45-03</span>
+          </div>
         </div>
       </div>
-    </v-container>
-  </v-app-bar>
+    </transition>
+
+
+
+  </a-layout-header>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, inject, reactive } from 'vue'
+import {
 
-const isScrolled = ref(false)
+  CodeOutlined,
+  MenuOutlined,
+  BulbOutlined,
+  BulbFilled,
+  MailOutlined,
+  PhoneOutlined
+} from '@ant-design/icons-vue'
+
+const showMobileMenu = ref(false)
 const activeSection = ref('hero')
-const mobileMenu = ref(false)
-const isDark = ref(false)
 
-const navItems = [
-  { id: 'hero', label: 'Главная' },
-  { id: 'about', label: 'Обо мне' },
-  { id: 'projects', label: 'Проекты' },
-  { id: 'contact', label: 'Контакты' }
+// Получаем состояние темы из провайдера
+const isDark = inject('isDark', ref(false))
+const toggleTheme = inject('toggleTheme', () => { })
+
+const menuItems = [
+  { key: 'hero', label: 'Главная' },
+  { key: 'about', label: 'Обо мне' },
+  { key: 'skills', label: 'Навыки' },
+  { key: 'projects', label: 'Проекты' },
+  { key: 'contact', label: 'Контакты' }
 ]
 
-const themeIcon = computed(() =>
-  isDark.value ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'
-)
-
-onMounted(() => {
-  // Отслеживание скролла
-  window.addEventListener('scroll', () => {
-    isScrolled.value = window.scrollY > 50
-    updateActiveSection()
-  })
-
-  // Проверяем тему
-  isDark.value = document.documentElement.classList.contains('dark')
-})
-
-const scrollTo = (sectionId: string) => {
+const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId)
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
+    const headerHeight = 64
+    const targetPosition = element.offsetTop - headerHeight
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    })
   }
-  mobileMenu.value = false
+  showMobileMenu.value = false
 }
 
+// Определение активной секции при скролле
 const updateActiveSection = () => {
-  for (const item of navItems) {
-    const element = document.getElementById(item.id)
+  const sections = menuItems.map(item => item.key)
+  const scrollPosition = window.scrollY + 100
+
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId)
     if (element) {
-      const rect = element.getBoundingClientRect()
-      if (rect.top <= 100 && rect.bottom >= 100) {
-        activeSection.value = item.id
+      const { offsetTop, offsetHeight } = element
+      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+        activeSection.value = sectionId
         break
       }
     }
   }
 }
 
-const toggleTheme = () => {
-  isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark')
-}
+onMounted(() => {
+  window.addEventListener('scroll', updateActiveSection)
+  updateActiveSection()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateActiveSection)
+})
 </script>
 
 <style scoped>
-.header {
-  background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(10px);
+.ant-layout-header {
+  padding: 0;
+  height: 64px;
+  line-height: 64px;
+}
+
+.ant-menu-light {
+  background: none;
+}
+
+.ant-menu-dark {
+  background: none;
+}
+
+/* Анимация для мобильного меню */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
   transition: all 0.3s ease;
+  max-height: 400px;
 }
 
-.header-scrolled {
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  max-height: 0;
+  opacity: 0;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.nav-links {
-  gap: 8px;
-}
-
-.nav-active {
-  background-color: rgba(var(--v-theme-primary), 0.1) !important;
-  color: rgb(var(--v-theme-primary)) !important;
-}
-
-.logo-text {
-  font-family: 'Poppins', sans-serif;
+.mobile-menu-enter-to,
+.mobile-menu-leave-from {
+  max-height: 400px;
+  opacity: 1;
 }
 </style>

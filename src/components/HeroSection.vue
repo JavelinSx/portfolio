@@ -1,113 +1,177 @@
 <template>
   <section id="hero"
-    class="min-h-screen bg-hero animate-gradient flex items-center text-white relative overflow-hidden">
-    <v-container class="h-full flex items-center">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
-        <!-- Текстовая часть -->
-        <div class="text-center lg:text-left space-y-6">
-          <div class="text-lg md:text-xl opacity-90 animate-fade-in-up">
-            Привет, меня зовут
-          </div>
+    class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-10 pr-4 pl-4">
+    <!-- Floating Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div v-for="(tech, index) in floatingTechs" :key="index"
+        :class="`absolute tech-icon animate-float animate-delay-${index * 200}`" :style="tech.style">
+        <component :is="tech.icon" />
+      </div>
+    </div>
 
-          <h1
-            class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight font-['Poppins'] animate-fade-in-up delay-200">
-            Никита <span class="gradient-text">Зуев</span>
-          </h1>
-
-          <h2 class="text-xl md:text-2xl font-medium opacity-90 animate-fade-in-up delay-300">
-            Frontend разработчик
-          </h2>
-
-          <p class="text-lg md:text-xl opacity-90 leading-relaxed max-w-2xl lg:max-w-none animate-fade-in-up delay-500">
-            Создаю современные веб-приложения с использованием Vue.js, React и TypeScript.
-            Фокусируюсь на качественном коде и отличном пользовательском опыте.
-          </p>
-
-          <!-- Кнопки -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-700">
-            <v-btn color="primary" size="large" prepend-icon="mdi-folder-multiple" class="hover-lift transition-all-300"
-              @click="scrollToProjects">
-              Мои проекты
-            </v-btn>
-
-            <v-btn variant="outlined" size="large" prepend-icon="mdi-email"
-              class="border-white text-white hover:bg-white hover:text-gray-900 transition-all-300"
-              @click="scrollToContact">
-              Связаться
-            </v-btn>
-          </div>
-
-          <!-- Социальные ссылки -->
-          <div
-            class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start animate-fade-in-up delay-1000">
-            <span class="text-sm opacity-80">Найти меня:</span>
-            <div class="flex gap-3">
-              <v-btn v-for="social in socialLinks" :key="social.name" :href="social.url" :icon="social.icon"
-                variant="text" target="_blank" size="small"
-                class="w-10 h-10 rounded-full glass hover-scale transition-all-300" />
+    <div class="container-custom relative z-10">
+      <a-row :gutter="[32, 32]" align="middle" class="min-h-screen">
+        <!-- Left Content -->
+        <a-col :xs="24" :lg="14" class="text-center lg:text-left">
+          <div class="space-y-6">
+            <!-- Greeting -->
+            <div class="animate-fade-in text-white/90 text-lg md:text-xl">
+              Привет, меня зовут
             </div>
-          </div>
-        </div>
 
-        <!-- Аватар -->
-        <div class="flex justify-center lg:justify-end animate-fade-in-left delay-500">
-          <div class="relative">
+            <!-- Name -->
+            <h1
+              class="animate-slide-up animate-delay-200 text-4xl md:text-6xl lg:text-7xl font-bold text-white font-display leading-tight">
+              Никита <span class="text-yellow-300">Зуев</span>
+            </h1>
+
+            <!-- Title -->
+            <h2 class="animate-slide-up animate-delay-400 text-xl md:text-3xl font-semibold text-white/90">
+              Frontend разработчик
+            </h2>
+
+            <!-- Description -->
+            <p class="animate-slide-up animate-delay-600 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
+              Создаю современные веб-приложения с использованием Vue(основа), React и TypeScript.
+              Фокусируюсь на качественном коде и отличном пользовательском опыте.
+            </p>
+
+            <!-- Action Buttons -->
             <div
-              class="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl animate-float">
-              <img src="@/assets/img/avatar.jpg" alt="Никита Зуев" class="w-full h-full object-cover"
-                @error="handleImageError" />
+              class="animate-slide-up animate-delay-800 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a-button type="primary" size="large" @click="scrollToSection('projects')"
+                class="h-12 px-8 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                <template #icon>
+                  <FolderOpenOutlined />
+                </template>
+                Мои проекты
+              </a-button>
+
+              <a-button size="large" @click="scrollToSection('contact')"
+                class="h-12 px-8 text-lg font-semibold bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 backdrop-blur-sm">
+                <template #icon>
+                  <MailOutlined />
+                </template>
+                Связаться
+              </a-button>
             </div>
 
-            <!-- Плавающие иконки технологий -->
-            <div class="absolute inset-0 pointer-events-none">
-              <div v-for="(tech, index) in techs" :key="tech.name"
-                :class="`absolute w-12 h-12 rounded-full glass flex items-center justify-center animate-float-tech tech-${index + 1} delay-${(index + 1) * 200}`"
-                :style="{ color: tech.color }">
-                <v-icon :icon="tech.icon" size="24" />
+            <!-- Social Links -->
+            <div class="animate-slide-up animate-delay-1000 flex items-center gap-6 justify-center lg:justify-start">
+              <span class="text-white/70 text-sm">Найти меня:</span>
+              <div class="flex gap-3">
+                <a-button v-for="social in socialLinks" :key="social.name" :href="social.url" target="_blank"
+                  type="text" shape="circle" size="large"
+                  class="glass-effect text-white hover:text-yellow-300 hover:scale-110 transition-all">
+                  <template #icon>
+                    <component :is="social.icon" />
+                  </template>
+                </a-button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </a-col>
 
-      <!-- Стрелка вниз -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce-soft opacity-80"
-        @click="scrollToAbout">
-        <v-icon icon="mdi-chevron-down" size="30" />
-      </div>
-    </v-container>
+        <!-- Right Content - Avatar -->
+        <a-col :xs="24" :lg="10" class="flex justify-center">
+          <div class="animate-slide-in-right animate-delay-500 relative">
+            <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden glass-effect p-2 animate-float">
+              <img :src="avatar" alt="Никита Зуев" class="w-full h-full object-cover rounded-full" />
+            </div>
+          </div>
+        </a-col>
+      </a-row>
+
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import avatar from '@/assets/img/avatar.jpg'
+import { ref } from 'vue'
+import {
+  FolderOpenOutlined,
+  MailOutlined,
+  DownOutlined,
+  GithubOutlined,
+  CodeOutlined,
+  DatabaseOutlined,
+  BugOutlined
+} from '@ant-design/icons-vue'
+
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/JavelinSx', icon: 'mdi-github' },
-  { name: 'Telegram', url: 'https://t.me/JavelinMynd', icon: 'mdi-telegram' },
-  { name: 'VK', url: 'https://vk.com/javelinsx', icon: 'mdi-vk' },
-  { name: 'Email', url: 'mailto:zuev499@gmail.com', icon: 'mdi-email' }
+  { name: 'GitHub', url: 'https://github.com/JavelinSx', icon: GithubOutlined },
+  { name: 'Email', url: 'mailto:zuev499@gmail.com', icon: MailOutlined },
 ]
 
-const techs = [
-  { name: 'Vue.js', icon: 'mdi-vuejs', color: '#4FC08D' },
-  { name: 'React', icon: 'mdi-react', color: '#61DAFB' },
-  { name: 'TypeScript', icon: 'mdi-language-typescript', color: '#3178C6' },
-  { name: 'Node.js', icon: 'mdi-nodejs', color: '#339933' }
+const floatingTechs = [
+  {
+    icon: CodeOutlined,
+    style: {
+      top: '20%',
+      right: '10%',
+      background: 'linear-gradient(45deg, #4FC08D, #42b883)',
+      animationDelay: '0s'
+    }
+  },
+  {
+    icon: DatabaseOutlined,
+    style: {
+      top: '80%',
+      right: '20%',
+      background: 'linear-gradient(45deg, #61DAFB, #21D4FD)',
+      animationDelay: '2s'
+    }
+  },
+  {
+    icon: BugOutlined,
+    style: {
+      top: '40%',
+      right: '5%',
+      background: 'linear-gradient(45deg, #3178C6, #235A97)',
+      animationDelay: '4s'
+    }
+  }
 ]
 
-const scrollToProjects = () => {
-  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    const headerHeight = 64
+    const targetPosition = element.offsetTop - headerHeight
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    })
+  }
 }
 
-const scrollToAbout = () => {
-  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
-}
-
-const scrollToContact = () => {
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-}
-
-const handleImageError = (event: Event) => {
-  const img = event.target as HTMLImageElement
-  img.src = '@/assets/img/avatar-placeholder.jpg'
-}
 </script>
+
+<style scoped>
+.hero-gradient {
+  background-size: 400% 400%;
+}
+
+.tech-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-effect {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .tech-icon {
+    display: none;
+  }
+}
+</style>

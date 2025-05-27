@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +12,7 @@
   body {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1,
@@ -38,38 +38,350 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-blue-500;
+    @apply bg-blue-500 dark:bg-blue-400;
   }
 }
 
-/* Минимум утилит */
+/* Кастомные компоненты */
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-effect {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .section-padding {
+    @apply py-20 px-6;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .gradient-text {
+    background: linear-gradient(45deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tech-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl font-semibold transition-all duration-300;
+  }
+
+  .tech-icon:hover {
+    @apply scale-110 shadow-lg;
+  }
+
+  /* Адаптивные цвета секций */
+  .section-bg-primary {
+    @apply bg-white dark:bg-gray-900;
+  }
+
+  .section-bg-secondary {
+    @apply bg-gray-50 dark:bg-gray-800;
+  }
+
+  .text-adaptive {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  .text-adaptive-secondary {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .border-adaptive {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+}
+
+/* Утилиты для анимаций */
 @layer utilities {
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animate-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animate-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animate-delay-800 {
+    animation-delay: 800ms;
+  }
+  .animate-delay-900 {
+    animation-delay: 900ms;
+  }
+  .animate-delay-1000 {
+    animation-delay: 1000ms;
+  }
+
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  /* Адаптивные размеры текста */
-  .text-responsive-xl {
-    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
-  }
-
-  .text-responsive-lg {
-    @apply text-xl md:text-2xl lg:text-3xl;
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 }
 
-/* Темная тема */
-.dark {
-  color-scheme: dark;
+/* Кастомизация Ant Design компонентов */
+.ant-card {
+  @apply border-0 shadow-lg transition-all duration-300;
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+.dark .ant-card {
+  @apply bg-gray-800 border-gray-700;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+.ant-card-body {
+  @apply p-6 h-full;
+}
+
+.dark .ant-card-body {
+  @apply text-gray-100;
+}
+
+.ant-btn-primary {
+  @apply bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700;
+}
+
+.dark .ant-btn-primary {
+  @apply bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600;
+}
+
+.ant-layout-header {
+  @apply bg-white shadow-sm;
+}
+
+.dark .ant-layout-header {
+  @apply bg-gray-900 border-gray-700;
+}
+
+.ant-menu-horizontal {
+  @apply border-0;
+}
+
+.ant-menu-item:hover {
+  @apply !text-blue-500;
+}
+
+.ant-menu-item-selected {
+  @apply !text-blue-900  !bg-blue-300;
+}
+
+.dark .ant-menu-item-selected {
+  @apply text-gray-100;
+}
+
+.ant-menu-item-selected::after {
+  @apply bg-blue-600;
+}
+
+.dark .ant-menu-item-selected::after {
+  @apply bg-blue-400;
+}
+
+/* Темная тема для модалок */
+.dark .ant-modal-content {
+  @apply bg-gray-800;
+}
+
+.dark .ant-modal-header {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .ant-modal-title {
+  @apply text-gray-100;
+}
+
+.dark .ant-modal-body {
+  @apply text-gray-100;
+}
+
+/* Темная тема для тегов */
+.dark .ant-tag {
+  @apply bg-gray-700 border-gray-600 text-gray-200;
+}
+
+/* Темная тема для прогресс-баров */
+.dark .ant-progress-outer {
+  @apply bg-gray-700;
+}
+
+/* Темная тема для кнопок */
+.dark .ant-btn {
+  @apply bg-gray-700 border-gray-600 text-gray-200 hover:bg-gray-600 hover:border-gray-500;
+}
+
+.dark .ant-btn-text {
+  @apply text-gray-300 hover:text-gray-100 hover:bg-gray-800;
+}
+
+/* Темная тема для типографии */
+.dark .ant-typography {
+  @apply text-gray-100;
+}
+
+.dark .ant-typography h1,
+.dark .ant-typography h2,
+.dark .ant-typography h3,
+.dark .ant-typography h4,
+.dark .ant-typography h5,
+.dark .ant-typography h6 {
+  @apply text-gray-100;
+}
+
+/* Кастомные анимации */
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out forwards;
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-12 px-4;
+  }
+
+  .hero-gradient {
+    background-attachment: scroll;
   }
 }

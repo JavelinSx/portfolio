@@ -1,161 +1,239 @@
 <template>
-  <section id="about" class="py-20 bg-white dark:bg-gray-900 transition-colors-200">
-    <v-container>
-      <!-- Заголовок секции -->
-      <div class="text-center mb-16 animate-fade-in-up">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 flex items-center justify-center">
-          <v-icon icon="mdi-account" class="mr-3" />
+  <section id="about" class="section-padding section-bg-secondary">
+    <div class="container-custom">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <a-typography-title :level="2" class="text-4xl md:text-5xl font-bold mb-4 gradient-text animate-slide-up">
+          <UserOutlined class="mr-4" />
           Обо мне
-        </h2>
-        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Узнайте больше о моем пути в разработке
+        </a-typography-title>
+        <p class="text-lg text-adaptive-secondary max-w-2xl mx-auto animate-slide-up animate-delay-200">
+          Узнайте больше о моем пути в разработке и опыте
         </p>
       </div>
 
-      <!-- Основной контент -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-        <!-- Личная информация -->
-        <v-card class="p-6 h-full hover-lift transition-all-300 animate-fade-in-left">
-          <div class="flex items-center mb-6">
-            <v-avatar size="64" class="mr-4">
-              <img src="@/assets/img/avatar.jpg" alt="Никита Зуев" @error="handleImageError" />
-            </v-avatar>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Никита Зуев</h3>
-              <p class="text-blue-500 font-medium">Frontend Developer</p>
-            </div>
-          </div>
+      <a-row :gutter="[32, 32]">
+        <!-- Personal Info -->
+        <a-col :xs="24" :lg="12">
+          <a-card class="h-full card-hover animate-slide-in-left shadow-lg border-0" :body-style="{ padding: '32px' }">
+            <!-- Avatar and Name -->
+            <div class="flex items-center mb-6">
+              <a-avatar :size="80" class="mr-4 border-4 border-blue-100 dark:border-blue-900" :src="avatar"
+                alt="Никита Зуев">
 
-          <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-            Frontend разработчик с {{ experienceYears }}+ годами опыта.
-            Специализируюсь на создании современных веб-приложений с использованием
-            Vue.js, React и TypeScript. Люблю изучать новые технологии и применять
-            лучшие практики разработки.
-          </p>
-
-          <!-- Контактная информация -->
-          <div class="space-y-3 mb-6">
-            <div class="flex items-center text-gray-600 dark:text-gray-400">
-              <v-icon icon="mdi-map-marker" color="primary" class="mr-3" />
-              <span>Плесецк, Россия</span>
-            </div>
-            <div class="flex items-center text-gray-600 dark:text-gray-400">
-              <v-icon icon="mdi-email" color="primary" class="mr-3" />
-              <a href="mailto:zuev499@gmail.com" class="hover:text-blue-500 transition-colors-200">zuev499@gmail.com</a>
-            </div>
-            <div class="flex items-center text-gray-600 dark:text-gray-400">
-              <v-icon icon="mdi-phone" color="primary" class="mr-3" />
-              <a href="tel:+79216734503" class="hover:text-blue-500 transition-colors-200">+7 (921) 673-45-03</a>
-            </div>
-          </div>
-
-          <!-- Кнопки действий -->
-          <div class="flex flex-col sm:flex-row gap-3">
-            <v-btn variant="outlined" prepend-icon="mdi-email" class="hover-lift transition-all-300"
-              @click="scrollToContact">
-              Связаться
-            </v-btn>
-          </div>
-        </v-card>
-
-        <!-- Статистика -->
-        <v-card class="p-6 h-full hover-lift transition-all-300 animate-fade-in-right">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Статистика</h3>
-
-          <div class="grid grid-cols-2 gap-6">
-            <div v-for="(stat, index) in stats" :key="stat.label" class="text-center animate-scale-in"
-              :class="`delay-${(index + 1) * 200}`">
-              <v-icon :icon="stat.icon" :color="stat.color" size="40" class="mb-3" />
-              <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">{{ stat.value }}</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400">{{ stat.label }}</div>
-            </div>
-          </div>
-        </v-card>
-      </div>
-
-      <!-- Образование и опыт -->
-      <div class="animate-fade-in-up delay-500">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">Образование и опыт</h3>
-
-        <div class="max-w-4xl mx-auto space-y-6">
-          <div v-for="(item, index) in timeline" :key="item.id"
-            class="flex flex-col md:flex-row gap-6 animate-fade-in-up" :class="`delay-${(index + 2) * 200}`">
-            <!-- Иконка -->
-            <div class="flex-shrink-0">
-              <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white">
-                <v-icon :icon="item.icon" size="24" />
-              </div>
-            </div>
-
-            <!-- Контент -->
-            <v-card class="flex-1 p-6 hover-lift transition-all-300">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">{{ item.title }}</h4>
-                  <p class="text-blue-500 font-medium">{{ item.organization }}</p>
+              </a-avatar>
+              <div>
+                <h3 class="text-2xl font-bold text-adaptive mb-1">Никита Зуев</h3>
+                <p class="text-blue-600 dark:text-blue-400 font-semibold text-lg">Frontend Developer</p>
+                <div class="flex items-center mt-1">
+                  <EnvironmentOutlined class="text-gray-400 dark:text-gray-500 mr-1" />
+                  <span class="text-gray-500 dark:text-gray-400 text-sm">Плесецк, Россия</span>
                 </div>
-                <span class="text-sm text-gray-500 dark:text-gray-400 font-medium mt-1 md:mt-0">{{ item.period }}</span>
               </div>
+            </div>
 
-              <p class="text-gray-700 dark:text-gray-300 mb-4">{{ item.description }}</p>
+            <!-- Description -->
+            <p class="text-adaptive-secondary mb-6 leading-relaxed text-base">
+              Frontend разработчик с {{ experienceYears }}+ годами опыта.
+              Специализируюсь на создании современных веб-приложений с использованием
+              Vue.js, React и TypeScript. Люблю изучать новые технологии и применять
+              лучшие практики разработки.
+            </p>
 
-              <div v-if="item.achievements?.length" class="space-y-2">
-                <h5 class="text-sm font-medium text-gray-900 dark:text-white">Достижения:</h5>
-                <ul class="space-y-1">
-                  <li v-for="achievement in item.achievements" :key="achievement"
-                    class="flex items-start text-sm text-gray-600 dark:text-gray-400">
-                    <v-icon icon="mdi-check-circle" size="16" class="text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>{{ achievement }}</span>
-                  </li>
-                </ul>
+            <!-- Contact Info -->
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-adaptive-secondary">
+                <MailOutlined class="text-blue-500 dark:text-blue-400 mr-3 text-lg" />
+                <a href="mailto:zuev499@gmail.com"
+                  class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  zuev499@gmail.com
+                </a>
               </div>
-            </v-card>
-          </div>
+              <div class="flex items-center text-adaptive-secondary">
+                <PhoneOutlined class="text-blue-500 dark:text-blue-400 mr-3 text-lg" />
+                <a href="tel:+79216734503" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  +7 (921) 673-45-03
+                </a>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a-button type="primary" @click="scrollToSection('contact')" class="flex-1">
+                <template #icon>
+                  <MailOutlined />
+                </template>
+                Связаться
+              </a-button>
+              <a-button href="https://github.com/JavelinSx" target="_blank" class="flex-1">
+                <template #icon>
+                  <GithubOutlined />
+                </template>
+                GitHub
+              </a-button>
+            </div>
+          </a-card>
+        </a-col>
+
+        <!-- Statistics -->
+        <a-col :xs="24" :lg="12">
+          <a-card class="h-full card-hover animate-slide-in-right shadow-lg border-0" :body-style="{ padding: '32px' }">
+            <h3 class="text-2xl font-bold text-adaptive mb-6">Статистика</h3>
+
+            <a-row :gutter="[16, 24]">
+              <a-col v-for="(stat, index) in stats" :key="stat.label" :xs="12" :sm="12" class="text-center">
+                <div :class="`animate-bounce-in animate-delay-${(index + 1) * 200}`">
+                  <div class="w-16 h-16 mx-auto mb-3 rounded-2xl flex items-center justify-center text-white text-2xl"
+                    :style="{ background: stat.color }">
+                    <component :is="stat.icon" />
+                  </div>
+                  <div class="text-3xl font-bold text-adaptive mb-1">{{ stat.value }}</div>
+                  <div class="text-sm text-adaptive-secondary">{{ stat.label }}</div>
+                </div>
+              </a-col>
+            </a-row>
+          </a-card>
+        </a-col>
+      </a-row>
+
+      <!-- Timeline -->
+      <div class="mt-16 pl-2 pr-2">
+        <h3 class="text-3xl font-bold text-adaptive mb-12 text-center animate-slide-up">
+          Образование и опыт
+        </h3>
+
+        <div class="max-w-4xl mx-auto">
+          <a-timeline :mode="isMobile ? 'left' : 'alternate'">
+            <a-timeline-item v-for="(item, index) in timeline" :key="item.id"
+              :class="`animate-slide-up animate-delay-${(index + 1) * 200}`">
+              <template #dot>
+                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white text-xl "
+                  :class="item.color">
+                  <component :is="item.icon" />
+                </div>
+              </template>
+
+              <a-card class="ml-4 md:m-4 card-hover border-0 shadow-md">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                  <div>
+                    <h4 class="text-xl font-bold text-adaptive">{{ item.title }}</h4>
+                    <p class="text-blue-600 dark:text-blue-400 font-semibold">{{ item.organization }}</p>
+                  </div>
+                  <a-tag color="blue" class="mt-2 md:mt-0">{{ item.period }}</a-tag>
+                </div>
+
+                <p class="text-adaptive-secondary mb-4">{{ item.description }}</p>
+
+                <div v-if="item.achievements?.length" class="space-y-2">
+                  <h5 class="font-semibold text-adaptive">Достижения:</h5>
+                  <ul class="space-y-1">
+                    <li v-for="achievement in item.achievements" :key="achievement"
+                      class="flex items-start text-adaptive-secondary">
+                      <CheckCircleOutlined class="text-green-500 dark:text-green-400 mr-2 mt-0.5 text-sm" />
+                      <span class="text-sm">{{ achievement }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </a-card>
+            </a-timeline-item>
+          </a-timeline>
         </div>
       </div>
 
-      <!-- Интересы и языки -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-        <!-- Интересы -->
-        <v-card class="p-6 hover-lift transition-all-300 animate-fade-in-left delay-1000">
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-            <v-icon icon="mdi-heart" class="mr-2 text-red-500" />
-            Интересы
-          </h4>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="interest in interests" :key="interest"
-              class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium hover-scale transition-all-300 cursor-default">
-              {{ interest }}
-            </span>
-          </div>
-        </v-card>
-
-        <!-- Языки -->
-        <v-card class="p-6 hover-lift transition-all-300 animate-fade-in-right delay-1000">
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-            <v-icon icon="mdi-translate" class="mr-2 text-blue-500" />
-            Языки
-          </h4>
-          <div class="space-y-3">
-            <div v-for="language in languages" :key="language.code" class="flex justify-between items-center">
-              <span class="font-medium text-gray-900 dark:text-white">{{ language.name }}</span>
-              <span class="text-sm text-gray-600 dark:text-gray-400">{{ language.level }}</span>
+      <!-- Interests and Languages -->
+      <a-row :gutter="[32, 32]" class="mt-16">
+        <!-- Interests -->
+        <a-col :xs="24" :md="12">
+          <a-card class="card-hover animate-slide-in-left animate-delay-1000 border-0 shadow-lg"
+            :body-style="{ padding: '24px' }">
+            <h4 class="text-xl font-bold text-adaptive mb-4 flex items-center">
+              <HeartOutlined class="mr-2 text-red-500 dark:text-red-400" />
+              Интересы
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <a-tag v-for="interest in interests" :key="interest" color="blue"
+                class="px-3 py-1 cursor-default hover:scale-105 transition-transform">
+                {{ interest }}
+              </a-tag>
             </div>
-          </div>
-        </v-card>
-      </div>
-    </v-container>
+          </a-card>
+        </a-col>
+
+        <!-- Languages -->
+        <a-col :xs="24" :md="12">
+          <a-card class="card-hover animate-slide-in-right animate-delay-1000 border-0 shadow-lg"
+            :body-style="{ padding: '24px' }">
+            <h4 class="text-xl font-bold text-adaptive mb-4 flex items-center">
+              <GlobalOutlined class="mr-2 text-blue-500 dark:text-blue-400" />
+              Языки
+            </h4>
+            <div class="space-y-3">
+              <div v-for="language in languages" :key="language.code" class="flex justify-between items-center">
+                <span class="font-semibold text-adaptive">{{ language.name }}</span>
+                <a-tag color="green">{{ language.level }}</a-tag>
+              </div>
+            </div>
+          </a-card>
+        </a-col>
+      </a-row>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const experienceYears = 2
+import avatar from '@/assets/img/avatar.jpg'
+import { ref } from 'vue'
+import {
+  UserOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  EnvironmentOutlined,
+  CheckCircleOutlined,
+  HeartOutlined,
+  GlobalOutlined,
+  CalendarOutlined,
+  FolderOutlined,
+  CodeOutlined,
+  CoffeeOutlined,
+  TrophyOutlined,
+  BankOutlined,
+  BookOutlined,
+  GithubOutlined
+} from '@ant-design/icons-vue'
+import { useWindowSize, useBreakpoints, breakpointsTailwind } from '@vueuse/core'
+
+// Breakpoints с Tailwind CSS
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
+const isMobile = breakpoints.smaller('md') // < 768px
+
+const experienceYears = ref(2)
 
 const stats = [
-  { label: 'Лет опыта', value: '2+', icon: 'mdi-calendar-clock', color: 'primary' },
-  { label: 'Проектов', value: '12+', icon: 'mdi-folder-multiple', color: 'success' },
-  { label: 'Технологий', value: '20+', icon: 'mdi-code-tags', color: 'warning' },
-  { label: 'Кофе выпито', value: '∞', icon: 'mdi-coffee', color: 'error' }
+  {
+    label: 'Лет опыта',
+    value: '2+',
+    icon: CalendarOutlined,
+    color: 'linear-gradient(45deg, #1890ff, #36cfc9)'
+  },
+  {
+    label: 'Проектов',
+    value: '12+',
+    icon: FolderOutlined,
+    color: 'linear-gradient(45deg, #52c41a, #73d13d)'
+  },
+  {
+    label: 'Технологий',
+    value: '20+',
+    icon: CodeOutlined,
+    color: 'linear-gradient(45deg, #faad14, #ffc53d)'
+  },
+  {
+    label: 'Кофе выпито',
+    value: '∞',
+    icon: CoffeeOutlined,
+    color: 'linear-gradient(45deg, #f5222d, #ff4d4f)'
+  }
 ]
 
 const timeline = [
@@ -165,7 +243,8 @@ const timeline = [
     organization: 'Фриланс',
     period: '2022 - настоящее время',
     description: 'Разработка Landing pages, SPA и Fullstack приложений для различных клиентов',
-    icon: 'mdi-briefcase',
+    icon: TrophyOutlined,
+    color: 'bg-blue-600',
     achievements: [
       'Создал более 12 проектов различной сложности',
       'Освоил современные фреймворки и библиотеки',
@@ -178,7 +257,8 @@ const timeline = [
     organization: 'Яндекс Практикум',
     period: '2022 - 2023',
     description: 'Интенсивный курс по современной веб-разработке',
-    icon: 'mdi-school',
+    icon: BookOutlined,
+    color: 'bg-primary-600',
     achievements: [
       'Изучил современные подходы к разработке',
       'Работал над реальными проектами',
@@ -191,7 +271,8 @@ const timeline = [
     organization: 'ВолГТУ',
     period: '2020 - 2021',
     description: 'Бакалавр по специальности "Прикладная информатика"',
-    icon: 'mdi-school'
+    icon: BankOutlined,
+    color: 'bg-amber-600'
   }
 ]
 
@@ -205,12 +286,38 @@ const languages = [
   { name: 'English', level: 'B1 — Средний', code: 'en' }
 ]
 
-const scrollToContact = () => {
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    const headerHeight = 64
+    const targetPosition = element.offsetTop - headerHeight
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    })
+  }
 }
 
 const handleImageError = (event: Event) => {
   const img = event.target as HTMLImageElement
-  img.src = '@/assets/img/avatar.jpg'
+  img.src = avatar
 }
 </script>
+
+<style scoped>
+.ant-timeline-item-content {
+  min-height: auto;
+}
+
+.ant-timeline-head {
+  background: none !important;
+}
+
+.ant-card {
+  border-radius: 12px;
+}
+
+.ant-avatar img {
+  object-fit: cover;
+}
+</style>
