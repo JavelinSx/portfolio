@@ -1,6 +1,6 @@
 <template>
-  <a-layout-footer class="bg-gray-900 text-white">
-    <div class="container-custom py-16 pb-6">
+  <a-layout-footer class="bg-gray-900 text-white ">
+    <div class="container-custom py-16 pb-6 pr-4 pl-4">
       <a-row :gutter="[32, 32]">
         <!-- Brand Section -->
         <a-col :xs="24" :md="12" :lg="8">
