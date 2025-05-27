@@ -5,7 +5,7 @@
   ]">
     <div class="container-custom md:justify-center flex items-center justify-end h-16 pl-4 pr-4">
       <!-- Desktop Navigation -->
-      <div class="hidden md:block">
+      <div class="hidden md:block min-w-[460px]">
         <a-menu mode="horizontal" :selected-keys="[activeSection]" :class="[
           'border-0',
           isDark ? 'bg-transparent' : 'bg-transparent'

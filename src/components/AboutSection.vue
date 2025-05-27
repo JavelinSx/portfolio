@@ -15,64 +15,67 @@
       <a-row :gutter="[32, 32]">
         <!-- Personal Info -->
         <a-col :xs="24" :lg="12">
-          <a-card class="h-full card-hover animate-slide-in-left shadow-lg border-0" :body-style="{ padding: '32px' }">
-            <!-- Avatar and Name -->
-            <div class="flex items-center mb-6">
-              <a-avatar :size="80" class="mr-4 border-4 border-blue-100 dark:border-blue-900" :src="avatar"
-                alt="Никита Зуев">
+          <div class="animate-slide-in-left">
+            <a-card class="h-full  border-0 shadow-lg animate-pulse-shadow" :body-style="{ padding: '32px' }">
+              <!-- Avatar and Name -->
+              <div class="flex items-center mb-6">
+                <a-avatar :size="80" class="mr-4 border-4 border-blue-100 dark:border-blue-900" :src="avatar"
+                  alt="Никита Зуев">
 
-              </a-avatar>
-              <div>
-                <h3 class="text-2xl font-bold text-adaptive mb-1">Никита Зуев</h3>
-                <p class="text-blue-600 dark:text-blue-400 font-semibold text-lg">Frontend Developer</p>
-                <div class="flex items-center mt-1">
-                  <EnvironmentOutlined class="text-gray-400 dark:text-gray-500 mr-1" />
-                  <span class="text-gray-500 dark:text-gray-400 text-sm">Плесецк, Россия</span>
+                </a-avatar>
+                <div>
+                  <h3 class="text-2xl font-bold text-adaptive mb-1">Никита Зуев</h3>
+                  <p class="text-blue-600 dark:text-blue-400 font-semibold text-lg">Frontend Developer</p>
+                  <div class="flex items-center mt-1">
+                    <EnvironmentOutlined class="text-gray-400 dark:text-gray-500 mr-1" />
+                    <span class="text-gray-500 dark:text-gray-400 text-sm">Плесецк, Россия</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Description -->
-            <p class="text-adaptive-secondary mb-6 leading-relaxed text-base">
-              Frontend разработчик с {{ experienceYears }}+ годами опыта.
-              Специализируюсь на создании современных веб-приложений с использованием
-              Vue.js, React и TypeScript. Люблю изучать новые технологии и применять
-              лучшие практики разработки.
-            </p>
+              <!-- Description -->
+              <p class="text-adaptive-secondary mb-6 leading-relaxed text-base">
+                Frontend разработчик с {{ experienceYears }}+ годами опыта.
+                Специализируюсь на создании современных веб-приложений с использованием
+                Vue.js, React и TypeScript. Люблю изучать новые технологии и применять
+                лучшие практики разработки.
+              </p>
 
-            <!-- Contact Info -->
-            <div class="space-y-3 mb-6">
-              <div class="flex items-center text-adaptive-secondary">
-                <MailOutlined class="text-blue-500 dark:text-blue-400 mr-3 text-lg" />
-                <a href="mailto:zuev499@gmail.com"
-                  class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  zuev499@gmail.com
-                </a>
+              <!-- Contact Info -->
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center text-adaptive-secondary">
+                  <MailOutlined class="text-blue-500 dark:text-blue-400 mr-3 text-lg" />
+                  <a href="mailto:zuev499@gmail.com"
+                    class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    zuev499@gmail.com
+                  </a>
+                </div>
+                <div class="flex items-center text-adaptive-secondary">
+                  <PhoneOutlined class="text-blue-500 dark:text-blue-400 mr-3 text-lg" />
+                  <a href="tel:+79216734503" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    +7 (921) 673-45-03
+                  </a>
+                </div>
               </div>
-              <div class="flex items-center text-adaptive-secondary">
-                <PhoneOutlined class="text-blue-500 dark:text-blue-400 mr-3 text-lg" />
-                <a href="tel:+79216734503" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  +7 (921) 673-45-03
-                </a>
-              </div>
-            </div>
 
-            <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3">
-              <a-button type="primary" @click="scrollToSection('contact')" class="flex-1">
-                <template #icon>
-                  <MailOutlined />
-                </template>
-                Связаться
-              </a-button>
-              <a-button href="https://github.com/JavelinSx" target="_blank" class="flex-1">
-                <template #icon>
-                  <GithubOutlined />
-                </template>
-                GitHub
-              </a-button>
-            </div>
-          </a-card>
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a-button type="primary" @click="scrollToSection('contact')" class="flex-1">
+                  <template #icon>
+                    <MailOutlined />
+                  </template>
+                  Связаться
+                </a-button>
+                <a-button href="https://github.com/JavelinSx" target="_blank" class="flex-1">
+                  <template #icon>
+                    <GithubOutlined />
+                  </template>
+                  GitHub
+                </a-button>
+              </div>
+            </a-card>
+          </div>
+
         </a-col>
 
         <!-- Statistics -->
@@ -113,7 +116,8 @@
                 </div>
               </template>
 
-              <a-card class="ml-4 md:m-4 card-hover border-0 shadow-md">
+              <a-card class="ml-4 md:m-4 border-0 "
+                :class="isDark ? 'shadow-lg shadow-slate-200 hover:shadow-amber-500' : 'shadow-lg shadow-gray-700 hover:shadow-cyan-500'">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
                   <div>
                     <h4 class="text-xl font-bold text-adaptive">{{ item.title }}</h4>
@@ -144,8 +148,8 @@
       <a-row :gutter="[32, 32]" class="mt-16">
         <!-- Interests -->
         <a-col :xs="24" :md="12">
-          <a-card class="card-hover animate-slide-in-left animate-delay-1000 border-0 shadow-lg"
-            :body-style="{ padding: '24px' }">
+          <a-card class="animate-slide-in-left animate-delay-1000 border-0 shadow-lg"
+            :class="isDark ? 'shadow-secondary-100' : 'shadow-slate-600'" :body-style="{ padding: '24px' }">
             <h4 class="text-xl font-bold text-adaptive mb-4 flex items-center">
               <HeartOutlined class="mr-2 text-red-500 dark:text-red-400" />
               Интересы
@@ -161,8 +165,8 @@
 
         <!-- Languages -->
         <a-col :xs="24" :md="12">
-          <a-card class="card-hover animate-slide-in-right animate-delay-1000 border-0 shadow-lg"
-            :body-style="{ padding: '24px' }">
+          <a-card class="animate-slide-in-right animate-delay-1000 border-0 shadow-lg"
+            :class="isDark ? 'shadow-amber-300' : 'shadow-emerald-800'" :body-style="{ padding: '24px' }">
             <h4 class="text-xl font-bold text-adaptive mb-4 flex items-center">
               <GlobalOutlined class="mr-2 text-blue-500 dark:text-blue-400" />
               Языки
@@ -182,7 +186,7 @@
 
 <script setup lang="ts">
 import avatar from '@/assets/img/avatar.jpg'
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import {
   UserOutlined,
   MailOutlined,
@@ -201,12 +205,13 @@ import {
   GithubOutlined
 } from '@ant-design/icons-vue'
 import { useWindowSize, useBreakpoints, breakpointsTailwind } from '@vueuse/core'
+import { useTheme } from '@/composables/useTheme'
 
 // Breakpoints с Tailwind CSS
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
 const isMobile = breakpoints.smaller('md') // < 768px
-
+const isDark = inject('isDark', ref(false))
 const experienceYears = ref(2)
 
 const stats = [

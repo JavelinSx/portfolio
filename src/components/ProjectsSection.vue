@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="section-padding bg-gray-50">
+  <section id="projects" class="section-padding " :class="isDark ? 'bg-slate-600' : 'bg-gray-50'">
     <div class="container-custom">
       <!-- Section Header -->
       <div class="text-center mb-16">
@@ -24,7 +24,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         <div v-for="(project, index) in filteredProjects" :key="project.id"
           :class="`animate-slide-up animate-delay-${(index + 1) * 100}`">
-          <a-card class="h-full card-hover border-0 shadow-lg overflow-hidden" :body-style="{ padding: '0' }">
+          <a-card class="h-full border-0 shadow-lg overflow-hidden hover:shadow-cyan-500"
+            :body-style="{ padding: '0' }">
             <!-- Project Image -->
             <div class="relative h-48 bg-gradient-to-r from-blue-500 to-purple-500 overflow-hidden">
               <img v-if="project.image" :src="project.image" :alt="project.name"
@@ -53,8 +54,9 @@
             <!-- Project Content -->
             <div class="p-6">
               <!-- Title and Description -->
-              <h3 class="text-xl font-bold text-gray-900 mb-2">{{ project.name }}</h3>
-              <p class="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
+              <h3 class="text-xl font-bold  mb-2" :class="isDark ? 'text-gray-200' : 'text-gray-800'">{{ project.name }}
+              </h3>
+              <p class=" mb-4 line-clamp-3 text-sm leading-relaxed" :class="isDark ? 'text-gray-200' : 'text-gray-800'">
                 {{ project.shortDescription }}
               </p>
 
@@ -102,7 +104,7 @@
 
       <!-- More Projects CTA -->
       <div class="text-center animate-slide-up animate-delay-1000">
-        <p class="text-gray-600 mb-4 text-lg">
+        <p class="mb-4 text-lg" :class="isDark ? 'text-gray-50' : 'text-gray-700'">
           Хотите увидеть больше проектов?
         </p>
         <a-button href="https://github.com/JavelinSx" target="_blank" type="primary" size="large"
@@ -185,7 +187,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, inject } from 'vue'
 import {
   FolderOpenOutlined,
   EyeOutlined,
@@ -205,7 +207,7 @@ const projects = ref(projectsData.projects)
 const activeFilter = ref('Все')
 const modalVisible = ref(false)
 const selectedProject = ref<Project | null>(null)
-
+const isDark = inject('isDark', ref(false))
 const filters = ['Все', 'Коммерческий проект', 'Личный проект', 'Тестовый проект']
 
 const filteredProjects = computed(() => {
